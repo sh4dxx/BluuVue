@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tasting Vue</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{titulo}}</h1>
+
+      <input type="text" v-model="nuevoUsuario" @keyup.enter="agregarUsuario" />
+      <!--<input type="text" v-model="nuevoUsuarioEdad">-->
+      <button @click="agregarUsuario">Agregar usuario</button>
+
+      <br>
+      
+      <ul>
+        <li v-for="usuario of usuarios">
+          <!--Nombre: {{usuario.nombre}}, edad: {{ usuario.edad }} años y es mayo de edad-->
+          Nombre: {{usuario.nombre}}, edad:
+          <input type="number" v-model.number="usuario.edad" /> años,
+          <span v-if="usuario.edad > 18"> eres MAYOR de edad </span>
+          <span v-else> eres MENOR de edad </span>
+        </li>
+      </ul>
+
+      <hr />
+
+      <ul>
+        <h3>FRUTAS</h3>
+        <li v-for="fruta of frutasArray">{{fruta}}</li>
+      </ul>
+
+      <ul>
+        <li v-for="fruta of frutas">
+          <input type="number" v-model.number="fruta.cantidad"/>
+          <button @click="fruta.cantidad++">+</button>  {{fruta.nombre}} 
+          <span v-if="fruta.cantidad == 0"> - Sin Stock</span>
+        </li>
+      </ul>
+
+      <h4> TOTAL: {{sumarFrutas}}</h4>
+
+      <hr/>
+
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="./exercise01.js"></script>
+  </body>
+</html>
